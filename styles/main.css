@@ -1,0 +1,620 @@
+/* =========================
+   VARIABLES
+========================= */
+
+:root {
+
+  --navy: #0F172A;
+  --slate: #1E293B;
+  --gold: #F59E0B;
+  --light: #F8FAFC;
+  --white: #ffffff;
+  --gray: #64748B;
+
+  --shadow:
+    0 4px 12px rgba(0,0,0,.15);
+
+  --transition:
+    all .3s ease;
+}
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  font-family:
+    "Poppins",
+    sans-serif;
+
+  background:
+    var(--light);
+
+  color:
+    var(--navy);
+
+  line-height: 1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+
+  background:
+    var(--navy);
+
+  color:
+    white;
+
+  padding:
+    1rem 2rem;
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    1rem;
+}
+
+.logo h1 {
+
+  color:
+    var(--gold);
+
+  font-size:
+    2rem;
+}
+
+.main-nav ul {
+
+  list-style:
+    none;
+
+  display:
+    flex;
+
+  gap:
+    1.5rem;
+}
+
+.main-nav a {
+
+  text-decoration:
+    none;
+
+  color:
+    white;
+
+  transition:
+    var(--transition);
+}
+
+.main-nav a:hover {
+
+  color:
+    var(--gold);
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-form {
+
+  display:
+    flex;
+
+  gap:
+    .5rem;
+}
+
+.search-form input {
+
+  padding:
+    .75rem;
+
+  border:
+    none;
+
+  border-radius:
+    6px;
+
+  width:
+    250px;
+}
+
+.search-form button,
+.btn {
+
+  background:
+    var(--gold);
+
+  color:
+    white;
+
+  border:
+    none;
+
+  padding:
+    .75rem 1rem;
+
+  border-radius:
+    6px;
+
+  cursor:
+    pointer;
+
+  transition:
+    var(--transition);
+}
+
+.search-form button:hover,
+.btn:hover {
+
+  transform:
+    translateY(-2px);
+
+  opacity:
+    .9;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-banner {
+
+  min-height:
+    70vh;
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  position:
+    relative;
+}
+
+.hero-overlay {
+
+  background:
+    rgba(0,0,0,.55);
+
+  min-height:
+    70vh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+}
+
+.hero-content {
+
+  color:
+    white;
+
+  max-width:
+    700px;
+
+  padding:
+    2rem;
+}
+
+.hero-content h2 {
+
+  font-size:
+    3rem;
+
+  margin-bottom:
+    1rem;
+}
+
+.hero-content p {
+
+  margin-bottom:
+    1.5rem;
+}
+
+/* =========================
+   FILTERS
+========================= */
+
+.controls {
+
+  padding:
+    2rem;
+}
+
+.filter-group {
+
+  display:
+    flex;
+
+  gap:
+    1rem;
+
+  flex-wrap:
+    wrap;
+
+  margin-top:
+    1rem;
+}
+
+select {
+
+  padding:
+    .75rem;
+
+  border:
+    1px solid #ddd;
+
+  border-radius:
+    6px;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.content-section {
+
+  padding:
+    2rem;
+}
+
+.content-section h2 {
+
+  margin-bottom:
+    1rem;
+}
+
+/* =========================
+   MOVIE GRID
+========================= */
+
+.movie-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(220px, 1fr)
+    );
+
+  gap:
+    1.5rem;
+}
+
+/* =========================
+   MOVIE CARD
+========================= */
+
+.movie-card {
+
+  background:
+    white;
+
+  border-radius:
+    12px;
+
+  overflow:
+    hidden;
+
+  box-shadow:
+    var(--shadow);
+
+  transition:
+    var(--transition);
+
+  animation:
+    fadeIn .5s ease;
+}
+
+.movie-card:hover {
+
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 12px 20px rgba(0,0,0,.2);
+}
+
+.movie-card img {
+
+  width:
+    100%;
+
+  height:
+    320px;
+
+  object-fit:
+    cover;
+}
+
+.movie-info {
+
+  padding:
+    1rem;
+}
+
+.movie-card h3 {
+
+  margin-bottom:
+    .5rem;
+}
+
+.movie-card a {
+
+  text-decoration:
+    none;
+
+  color:
+    inherit;
+}
+
+/* =========================
+   DETAILS PAGE
+========================= */
+
+.details {
+
+  max-width:
+    1200px;
+
+  margin:
+    auto;
+
+  padding:
+    2rem;
+}
+
+.details-header {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    350px 1fr;
+
+  gap:
+    2rem;
+
+  margin-bottom:
+    3rem;
+}
+
+.details-poster {
+
+  width:
+    100%;
+
+  border-radius:
+    12px;
+
+  box-shadow:
+    var(--shadow);
+}
+
+.details-info h1 {
+
+  margin-bottom:
+    1rem;
+}
+
+.details-info p {
+
+  margin-bottom:
+    .75rem;
+}
+
+/* =========================
+   TRAILER
+========================= */
+
+.trailer-section {
+
+  margin-top:
+    2rem;
+}
+
+.trailer-section iframe {
+
+  border:
+    none;
+
+  border-radius:
+    12px;
+}
+
+/* =========================
+   CAST
+========================= */
+
+.cast-list {
+
+  list-style:
+    none;
+
+  display:
+    grid;
+
+  gap:
+    .75rem;
+
+  margin-top:
+    1rem;
+}
+
+/* =========================
+   YOUTUBE VIDEOS
+========================= */
+
+.video-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(300px, 1fr)
+    );
+
+  gap:
+    1rem;
+
+  margin-top:
+    1rem;
+}
+
+.video-grid iframe {
+
+  width:
+    100%;
+
+  height:
+    250px;
+
+  border:
+    none;
+
+  border-radius:
+    12px;
+}
+
+/* =========================
+   FAVORITES
+========================= */
+
+.remove-btn {
+
+  width:
+    100%;
+
+  background:
+    crimson;
+
+  color:
+    white;
+
+  border:
+    none;
+
+  padding:
+    .75rem;
+
+  cursor:
+    pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+  background:
+    var(--navy);
+
+  color:
+    white;
+
+  text-align:
+    center;
+
+  padding:
+    2rem;
+
+  margin-top:
+    3rem;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(20px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .site-header {
+
+    flex-direction:
+      column;
+  }
+
+  .search-form {
+
+    width:
+      100%;
+  }
+
+  .search-form input {
+
+    width:
+      100%;
+  }
+
+  .hero-content h2 {
+
+    font-size:
+      2rem;
+  }
+
+  .details-header {
+
+    grid-template-columns:
+      1fr;
+  }
+
+  .movie-card img {
+
+    height:
+      auto;
+  }
+}

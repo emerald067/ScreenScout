@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScreenScout | Discover Movies & TV Shows</title>
+
+    <meta name="description"
+        content="Discover trending movies and TV shows, watch trailers, view cast information, and save your favorites with ScreenScout.">
+
+    <link rel="stylesheet" href="./styles/main.css">
+
+    <script type="module" src="./scripts/main.js" defer></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <div class="logo">
+            <h1>🎬 ScreenScout</h1>
+        </div>
+
+        <nav class="main-nav">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="favorites.html">Favorites</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <form
+            id="search-form"
+            class="search-form">
+
+            <label
+                for="search-input"
+                class="visually-hidden">
+
+                Search Movies
+            </label>
+
+            <input
+                id="search-input"
+                type="search"
+                placeholder="Search movies or TV shows...">
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+    </header>
+
+    <main>
+
+        <section
+            id="hero-banner"
+            class="hero-banner">
+
+            <div class="hero-overlay">
+
+                <div class="hero-content">
+
+                    <h2 id="hero-title">
+                        Loading...
+                    </h2>
+
+                    <p id="hero-overview">
+                    </p>
+
+                    <a
+                        id="hero-button"
+                        class="btn">
+
+                        View Details
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="controls">
+
+            <h2>Browse Content</h2>
+
+            <div class="filter-group">
+
+                <select id="genre-select">
+                    <option value="">
+                        All Genres
+                    </option>
+                </select>
+
+                <select id="sort-select">
+
+                    <option value="popularity.desc">
+                        Most Popular
+                    </option>
+
+                    <option value="vote_average.desc">
+                        Highest Rated
+                    </option>
+
+                    <option value="release_date.desc">
+                        Newest
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+        <section class="content-section">
+
+            <h2>Trending Movies</h2>
+
+            <div
+                id="trending-list"
+                class="movie-grid">
+
+            </div>
+
+        </section>
+
+        <section class="content-section">
+
+            <h2>Popular TV Shows</h2>
+
+            <div
+                id="tv-list"
+                class="movie-grid">
+
+            </div>
+
+        </section>
+
+        <section class="content-section">
+
+            <h2>Upcoming Movies</h2>
+
+            <div
+                id="upcoming-list"
+                class="movie-grid">
+
+            </div>
+
+        </section>
+
+        <section class="content-section">
+
+            <h2>Search Results</h2>
+
+            <div
+                id="movie-list"
+                class="movie-grid">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            Powered by TMDb
+        </p>
+
+        <p>
+            © 2026 ScreenScout
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
