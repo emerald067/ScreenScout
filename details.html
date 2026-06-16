@@ -1,76 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover movies and TV shows with ScreenScout. Browse trending titles, search by genre, and save your favorites. Powered by TMDb.">
+  <meta name="author" content="Emerald Uwaoma Awoke">
 
-    <meta charset="UTF-8">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="ScreenScout – Discover Movies & TV Shows">
+  <meta property="og:description" content="Explore trending movies and TV shows, search by genre, and save your favorites with ScreenScout.">
+  <meta property="og:url" content="https://emerald067.github.io/ScreenScout/">
+  <meta property="og:type" content="website">
+    
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+  <title>ScreenScout | Discover Movies & TV Shows</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <!--CSS files-->
+  <link rel="stylesheet" href="styles/main.css">
 
-    <title>Movie Details | ScreenScout</title>
-
-    <link rel="stylesheet"
-        href="./styles/main.css">
-
-    <script
-        type="module"
-        src="./scripts/details.js"
-        defer></script>
-
+  <!--JS files-->
+  <script type="module" src="scripts/details.js" defer></script>
 </head>
-
 <body>
+  <header class="site-header">
+    <h1>🎬 ScreenScout</h1>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header class="site-header">
+  <main>
+    <div id="movie-details">
+      <div class="loading">Loading movie details...</div>
+    </div>
+  </main>
 
-        <h1>🎬 ScreenScout</h1>
-
-        <nav class="main-nav">
-
-            <ul>
-
-                <li>
-                    <a href="index.html">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="favorites.html">
-                        Favorites
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-    </header>
-
-    <main>
-
-        <div id="movie-details">
-
-            <div class="loading">
-
-                Loading movie details...
-
-            </div>
-
-        </div>
-
-    </main>
-
-    <footer>
-
-        <p>
-            Powered by TMDb
-        </p>
-
-    </footer>
-
+  <footer>
+    <p>Powered by TMDb</p>
+  </footer>
 </body>
-
 </html>

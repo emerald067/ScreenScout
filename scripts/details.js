@@ -1,257 +1,114 @@
 import {
-  getMovieDetails,
-  getMovieCredits,
-  getMovieVideos,
+  getMovieDetails, getMovieCredits, getMovieVideos,
+  getTVDetails, getTVCredits, getTVVideos,
   searchYouTubeVideos
 } from "./api.js";
 
-const container =
-  document.querySelector("#movie-details");
-
-const params =
-  new URLSearchParams(window.location.search);
-
-const movieId =
-  params.get("id");
+const container = document.querySelector("#movie-details");
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const type = params.get("type") || "movie";
 
 initialize();
 
 async function initialize() {
-
-  if (!movieId) {
-
-    container.innerHTML = `
-      <p>Movie not found.</p>
-    `;
-
+  if (!id) {
+    container.innerHTML = "<p class='error-message'>Content not found.</p>";
     return;
   }
-
   try {
-
-    const movie =
-      await getMovieDetails(movieId);
-
-    const credits =
-      await getMovieCredits(movieId);
-
-    const videos =
-      await getMovieVideos(movieId);
-
-    const youtubeVideos =
-      await searchYouTubeVideos(
-        `${movie.title} behind the scenes`
-      );
-
-    displayMovie(
-      movie,
-      credits.cast,
-      videos.results,
-      youtubeVideos.items
-    );
-
+    let data, credits, videos;
+    if (type === "movie") {
+      data = await getMovieDetails(id);
+      credits = await getMovieCredits(id);
+      videos = await getMovieVideos(id);
+    } else {
+      data = await getTVDetails(id);
+      credits = await getTVCredits(id);
+      videos = await getTVVideos(id);
+    }
+    const youtubeVideos = await searchYouTubeVideos(`${data.name || data.title} trailer`);
+    displayContent(data, credits.cast, videos.results, youtubeVideos.items);
+    saveToRecentlyViewed(data);
   } catch (error) {
-
-    container.innerHTML = `
-      <p>
-        Unable to load movie information.
-        Please try again later.
-      </p>
-    `;
-
     console.error(error);
+    container.innerHTML = "<p class='error-message'>Unable to load information.</p>";
   }
 }
 
-function displayMovie(
-  movie,
-  cast,
-  videos,
-  youtubeVideos
-) {
-
-  const poster =
-    movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : "./images/placeholder.jpg";
-
-  const trailer =
-    videos.find(
-      video =>
-        video.type === "Trailer" &&
-        video.site === "YouTube"
-    );
+function displayContent(item, cast, videos, youtubeVideos) {
+  const isMovie = type === "movie";
+  const title = item.title || item.name;
+  const poster = item.poster_path
+    ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
+    : "https://via.placeholder.com/500x750?text=No+Poster";
+  const trailer = videos.find(v => v.type === "Trailer" && v.site === "YouTube");
+  const releaseDate = item.release_date || item.first_air_date || "Unknown";
+  const rating = item.vote_average?.toFixed(1) || "N/A";
+  const genres = item.genres?.map(g => g.name).join(", ") || "N/A";
+  const runtime = item.runtime ? `${item.runtime} mins` : (isMovie ? "N/A" : "TV Series");
 
   container.innerHTML = `
-    <section class="details">
-
+    <div class="details">
       <div class="details-header">
-
-        <img
-          class="details-poster"
-          src="${poster}"
-          alt="${movie.title}">
-
+        <img class="details-poster" src="${poster}" alt="${title}">
         <div class="details-info">
-
-          <h1>
-            ${movie.title}
-          </h1>
-
-          <p>
-            ${movie.overview}
-          </p>
-
-          <p>
-            <strong>Release Date:</strong>
-            ${movie.release_date}
-          </p>
-
-          <p>
-            <strong>Rating:</strong>
-            ⭐ ${movie.vote_average.toFixed(1)}
-          </p>
-
-          <p>
-            <strong>Genres:</strong>
-            ${movie.genres
-              .map(genre => genre.name)
-              .join(", ")}
-          </p>
-
-          <p>
-            <strong>Runtime:</strong>
-            ${movie.runtime} mins
-          </p>
-
-          <button
-            id="favorite-btn"
-            class="btn">
-
-            Add to Favorites
-
-          </button>
-
+          <h1>${title} ${!isMovie ? '<span class="tv-badge">📺 TV</span>' : ''}</h1>
+          <p><strong>Overview:</strong> ${item.overview || "No overview available."}</p>
+          <p><strong>Release Date:</strong> ${releaseDate}</p>
+          <p><strong>Rating:</strong> ⭐ ${rating}</p>
+          <p><strong>Genres:</strong> ${genres}</p>
+          <p><strong>${isMovie ? "Runtime" : "Seasons"}:</strong> ${runtime}</p>
+          <button id="favorite-btn" class="btn">⭐ Add to Favorites</button>
         </div>
-
       </div>
 
-      <section class="trailer-section">
+      <div class="trailer-section">
+        <h2>Official Trailer</h2>
+        ${trailer
+          ? `<iframe width="100%" height="500" src="https://www.youtube.com/embed/${trailer.key}" allowfullscreen></iframe>`
+          : `<p>No trailer available.</p>`}
+      </div>
 
-        <h2>
-          Official Trailer
-        </h2>
-
-        ${
-          trailer
-            ? `
-              <iframe
-                width="100%"
-                height="500"
-                src="https://www.youtube.com/embed/${trailer.key}"
-                title="Movie Trailer"
-                allowfullscreen>
-              </iframe>
-            `
-            : `
-              <p>
-                No trailer available.
-              </p>
-            `
-        }
-
-      </section>
-
-      <section class="cast-section">
-
-        <h2>
-          Top Cast
-        </h2>
-
+      <div class="cast-section">
+        <h2>Top Cast</h2>
         <ul class="cast-list">
-
-          ${cast
-            .slice(0, 10)
-            .map(
-              actor => `
-                <li>
-                  <strong>${actor.name}</strong>
-                  as
-                  ${actor.character}
-                </li>
-              `
-            )
-            .join("")}
-
+          ${cast.slice(0, 10).map(actor => `<li><strong>${actor.name}</strong> as ${actor.character}</li>`).join("")}
         </ul>
+      </div>
 
-      </section>
-
-      <section class="related-videos">
-
-        <h2>
-          Behind The Scenes
-        </h2>
-
+      <div class="related-videos">
+        <h2>Related Videos</h2>
         <div class="video-grid">
-
-          ${youtubeVideos
-            .slice(0, 3)
-            .map(
-              video => `
-                <iframe
-                  src="https://www.youtube.com/embed/${video.id.videoId}"
-                  title="${video.snippet.title}"
-                  allowfullscreen>
-                </iframe>
-              `
-            )
-            .join("")}
-
+          ${youtubeVideos.slice(0, 3).map(video => `
+            <iframe src="https://www.youtube.com/embed/${video.id.videoId}" title="${video.snippet.title}" allowfullscreen></iframe>
+          `).join("")}
         </div>
-
-      </section>
-
-    </section>
+      </div>
+    </div>
   `;
 
-  document
-    .querySelector("#favorite-btn")
-    .addEventListener(
-      "click",
-      () => saveFavorite(movie)
-    );
+  document.getElementById("favorite-btn").addEventListener("click", () => saveFavorite(item));
 }
 
-function saveFavorite(movie) {
+function saveToRecentlyViewed(item) {
+  let recent = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+  // Remove existing entry with same id
+  recent = recent.filter(entry => entry.item.id !== item.id);
+  // Add to front
+  recent.unshift({ item, timestamp: Date.now(), type });
+  // Keep only last 10
+  recent = recent.slice(0, 10);
+  localStorage.setItem("recentlyViewed", JSON.stringify(recent));
+}
 
-  const favorites =
-    JSON.parse(
-      localStorage.getItem("favorites")
-    ) || [];
-
-  const exists =
-    favorites.find(
-      item => item.id === movie.id
-    );
-
-  if (exists) {
-
-    alert(
-      "Movie already exists in favorites."
-    );
-
+function saveFavorite(item) {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  if (favorites.some(fav => fav.id === item.id)) {
+    alert("Already in favorites!");
     return;
   }
-
-  favorites.push(movie);
-
-  localStorage.setItem(
-    "favorites",
-    JSON.stringify(favorites)
-  );
-
-  alert(
-    `${movie.title} added to favorites!`
-  );
+  favorites.push(item);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  alert(`${item.title || item.name} added to favorites!`);
 }

@@ -1,27 +1,16 @@
-/* =========================
-   VARIABLES
-========================= */
-
+/* ===== VARIABLES ===== */
 :root {
-
   --navy: #0F172A;
   --slate: #1E293B;
   --gold: #F59E0B;
   --light: #F8FAFC;
   --white: #ffffff;
   --gray: #64748B;
-
-  --shadow:
-    0 4px 12px rgba(0,0,0,.15);
-
-  --transition:
-    all .3s ease;
+  --shadow: 0 4px 12px rgba(0,0,0,.15);
+  --transition: all 0.3s ease;
 }
 
-/* =========================
-   RESET
-========================= */
-
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -29,592 +18,368 @@
 }
 
 body {
-
-  font-family:
-    "Poppins",
-    sans-serif;
-
-  background:
-    var(--light);
-
-  color:
-    var(--navy);
-
-  line-height: 1.6;
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  background: var(--light);
+  color: var(--navy);
+  line-height: 2;
 }
 
-/* =========================
-   HEADER
-========================= */
-
+/* ===== HEADER ===== */
 .site-header {
-
-  background:
-    var(--navy);
-
-  color:
-    white;
-
-  padding:
-    1rem 2rem;
-
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    1rem;
+  background: var(--navy);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
 .logo h1 {
-
-  color:
-    var(--gold);
-
-  font-size:
-    2rem;
+  color: var(--gold);
+  font-size: 1.8rem;
 }
 
 .main-nav ul {
-
-  list-style:
-    none;
-
-  display:
-    flex;
-
-  gap:
-    1.5rem;
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .main-nav a {
-
-  text-decoration:
-    none;
-
-  color:
-    white;
-
-  transition:
-    var(--transition);
+  text-decoration: none;
+  color: white;
+  transition: var(--transition);
 }
 
 .main-nav a:hover {
-
-  color:
-    var(--gold);
+  color: var(--gold);
 }
 
-/* =========================
-   SEARCH
-========================= */
-
 .search-form {
-
-  display:
-    flex;
-
-  gap:
-    .5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .search-form input {
-
-  padding:
-    .75rem;
-
-  border:
-    none;
-
-  border-radius:
-    6px;
-
-  width:
-    250px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  width: 250px;
 }
 
 .search-form button,
 .btn {
-
-  background:
-    var(--gold);
-
-  color:
-    white;
-
-  border:
-    none;
-
-  padding:
-    .75rem 1rem;
-
-  border-radius:
-    6px;
-
-  cursor:
-    pointer;
-
-  transition:
-    var(--transition);
+  background: var(--gold);
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
 }
 
 .search-form button:hover,
 .btn:hover {
-
-  transform:
-    translateY(-2px);
-
-  opacity:
-    .9;
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-/* =========================
-   HERO
-========================= */
-
+/* ===== HERO BANNER ===== */
 .hero-banner {
-
-  min-height:
-    70vh;
-
-  background-size:
-    cover;
-
-  background-position:
-    center;
-
-  position:
-    relative;
+  min-height: 85vh;     
+  background-size: cover;
+  background-position: center 15%;  
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 .hero-overlay {
-
-  background:
-    rgba(0,0,0,.55);
-
-  min-height:
-    70vh;
-
-  display:
-    flex;
-
-  align-items:
-    center;
+  background: rgba(0,0,0,0.6);
+  min-height: 85vh;       
+  display: flex;
+  align-items: center;
 }
 
 .hero-content {
-
-  color:
-    white;
-
-  max-width:
-    700px;
-
-  padding:
-    2rem;
+  color: white;
+  max-width: 700px;
+  padding: 2rem;
 }
 
 .hero-content h2 {
-
-  font-size:
-    3rem;
-
-  margin-bottom:
-    1rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
 }
 
 .hero-content p {
-
-  margin-bottom:
-    1.5rem;
+  margin-bottom: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* =========================
-   FILTERS
-========================= */
-
+/* ===== FILTERS ===== */
 .controls {
-
-  padding:
-    2rem;
+  padding: 2rem 2rem 0 2rem;
 }
 
 .filter-group {
-
-  display:
-    flex;
-
-  gap:
-    1rem;
-
-  flex-wrap:
-    wrap;
-
-  margin-top:
-    1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
 select {
-
-  padding:
-    .75rem;
-
-  border:
-    1px solid #ddd;
-
-  border-radius:
-    6px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-/* =========================
-   SECTIONS
-========================= */
-
+/* ===== SECTIONS ===== */
 .content-section {
-
-  padding:
-    2rem;
+  padding: 2rem;
 }
 
 .content-section h2 {
-
-  margin-bottom:
-    1rem;
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--gold);
+  padding-left: 1rem;
 }
 
-/* =========================
-   MOVIE GRID
-========================= */
-
+/* ===== MOVIE GRID ===== */
 .movie-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(220px, 1fr)
-    );
-
-  gap:
-    1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
-/* =========================
-   MOVIE CARD
-========================= */
-
+/* ===== MOVIE CARD ===== */
 .movie-card {
-
-  background:
-    white;
-
-  border-radius:
-    12px;
-
-  overflow:
-    hidden;
-
-  box-shadow:
-    var(--shadow);
-
-  transition:
-    var(--transition);
-
-  animation:
-    fadeIn .5s ease;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  animation: fadeIn 0.5s ease;
 }
 
 .movie-card:hover {
-
-  transform:
-    translateY(-8px);
-
-  box-shadow:
-    0 12px 20px rgba(0,0,0,.2);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
 }
 
 .movie-card img {
-
-  width:
-    100%;
-
-  height:
-    320px;
-
-  object-fit:
-    cover;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
 }
 
 .movie-info {
-
-  padding:
-    1rem;
+  padding: 1rem;
 }
 
 .movie-card h3 {
-
-  margin-bottom:
-    .5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .movie-card a {
-
-  text-decoration:
-    none;
-
-  color:
-    inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* =========================
-   DETAILS PAGE
-========================= */
+.movie-card p {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
 
+.remove-btn {
+  width: 100%;
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.remove-btn:hover {
+  background: darkred;
+}
+
+/* ===== DETAILS PAGE ===== */
 .details {
-
-  max-width:
-    1200px;
-
-  margin:
-    auto;
-
-  padding:
-    2rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
 }
 
 .details-header {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    350px 1fr;
-
-  gap:
-    2rem;
-
-  margin-bottom:
-    3rem;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .details-poster {
-
-  width:
-    100%;
-
-  border-radius:
-    12px;
-
-  box-shadow:
-    var(--shadow);
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 .details-info h1 {
-
-  margin-bottom:
-    1rem;
+  margin-bottom: 1rem;
 }
 
 .details-info p {
-
-  margin-bottom:
-    .75rem;
+  margin-bottom: 0.75rem;
 }
 
-/* =========================
-   TRAILER
-========================= */
-
-.trailer-section {
-
-  margin-top:
-    2rem;
+.trailer-section,
+.cast-section,
+.related-videos {
+  margin-top: 2rem;
 }
 
-.trailer-section iframe {
-
-  border:
-    none;
-
-  border-radius:
-    12px;
+.trailer-section iframe,
+.video-grid iframe {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
 }
-
-/* =========================
-   CAST
-========================= */
 
 .cast-list {
-
-  list-style:
-    none;
-
-  display:
-    grid;
-
-  gap:
-    .75rem;
-
-  margin-top:
-    1rem;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-/* =========================
-   YOUTUBE VIDEOS
-========================= */
+.cast-list li {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
 
 .video-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(300px, 1fr)
-    );
-
-  gap:
-    1rem;
-
-  margin-top:
-    1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .video-grid iframe {
-
-  width:
-    100%;
-
-  height:
-    250px;
-
-  border:
-    none;
-
-  border-radius:
-    12px;
+  height: 250px;
 }
 
-/* =========================
-   FAVORITES
-========================= */
-
-.remove-btn {
-
-  width:
-    100%;
-
-  background:
-    crimson;
-
-  color:
-    white;
-
-  border:
-    none;
-
-  padding:
-    .75rem;
-
-  cursor:
-    pointer;
+/* ===== LOADING & ERROR ===== */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--gray);
 }
 
-/* =========================
-   FOOTER
-========================= */
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: crimson;
+  background: #ffe0e0;
+  border-radius: 12px;
+}
 
+/* ===== FOOTER ===== */
 footer {
-
-  background:
-    var(--navy);
-
-  color:
-    white;
-
-  text-align:
-    center;
-
-  padding:
-    2rem;
-
-  margin-top:
-    3rem;
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-
+/* ===== ANIMATIONS ===== */
 @keyframes fadeIn {
-
   from {
-
     opacity: 0;
-
-    transform:
-      translateY(20px);
+    transform: translateY(20px);
   }
-
   to {
-
     opacity: 1;
-
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
+    .hero-banner {
+    min-height: 60vh;
+    background-position: center 25%;
+  }
+
+  .hero-overlay {
+    min-height: 60vh;
+  }
 
   .site-header {
-
-    flex-direction:
-      column;
+    flex-direction: column;
+    text-align: center;
   }
 
   .search-form {
-
-    width:
-      100%;
+    width: 100%;
   }
 
   .search-form input {
-
-    width:
-      100%;
+    width: 100%;
   }
 
   .hero-content h2 {
-
-    font-size:
-      2rem;
+    font-size: 2rem;
   }
 
   .details-header {
-
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
   .movie-card img {
-
-    height:
-      auto;
+    height: auto;
   }
+
+  .controls {
+    padding: 1rem;
+  }
+  
+  .content-section {
+    padding: 1rem;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.tv-badge {
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }

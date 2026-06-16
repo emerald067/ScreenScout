@@ -1,193 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover movies and TV shows with ScreenScout. Browse trending titles, search by genre, and save your favorites. Powered by TMDb.">
+  <meta name="author" content="Emerald Uwaoma Awoke">
 
-    <title>ScreenScout | Discover Movies & TV Shows</title>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="ScreenScout – Discover Movies & TV Shows">
+  <meta property="og:description" content="Explore trending movies and TV shows, search by genre, and save your favorites with ScreenScout.">
+  <meta property="og:url" content="https://emerald067.github.io/ScreenScout/">
+  <meta property="og:type" content="website">
+    
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+  <title>ScreenScout | Discover Movies & TV Shows</title>
 
-    <meta name="description"
-        content="Discover trending movies and TV shows, watch trailers, view cast information, and save your favorites with ScreenScout.">
+  <!--CSS files-->
+  <link rel="stylesheet" href="styles/main.css">
 
-    <link rel="stylesheet" href="./styles/main.css">
-
-    <script type="module" src="./scripts/main.js" defer></script>
+  <!--JS files-->
+  <script type="module" src="scripts/main.js" defer></script>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="logo">
+      <h1>🎬 ScreenScout</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+      </ul>
+    </nav>
+    <form id="search-form" class="search-form">
+      <input type="search" id="search-input" placeholder="Search movies or TV shows..." aria-label="Search">
+      <button type="submit">Search</button>
+    </form>
+  </header>
 
-    <header class="site-header">
-
-        <div class="logo">
-            <h1>🎬 ScreenScout</h1>
+  <main>
+    <!-- Hero Banner (trending movie of the week) -->
+    <section id="hero-banner" class="hero-banner">
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h2 id="hero-title">Loading...</h2>
+          <p id="hero-overview"></p>
+          <a id="hero-button" class="btn">View Details</a>
         </div>
+      </div>
+    </section>
 
-        <nav class="main-nav">
+    <!-- Filters -->
+    <section class="controls">
+      <h2>Browse Movies</h2>
+      <div class="filter-group">
+        <select id="genre-select" aria-label="Genre filter">
+          <option value="">All Genres</option>
+        </select>
+        <select id="sort-select" aria-label="Sort by">
+          <option value="popularity.desc">Most Popular</option>
+          <option value="vote_average.desc">Highest Rated</option>
+          <option value="release_date.desc">Newest</option>
+        </select>
+      </div>
+    </section>
 
-            <ul>
+    <!-- Search / Filter Results -->
+    <section class="content-section">
+      <h2>Movies</h2>
+      <div id="movie-list" class="movie-grid">
+        <div class="loading">Loading movies...</div>
+      </div>
+    </section>
 
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
+    <!-- Trending Movies -->
+    <section class="content-section">
+      <h2>🔥 Trending Movies</h2>
+      <div id="trending-list" class="movie-grid"></div>
+    </section>
 
-                <li>
-                    <a href="favorites.html">Favorites</a>
-                </li>
+    <!-- Popular TV Shows -->
+    <section class="content-section">
+      <h2>📺 Popular TV Shows</h2>
+      <div id="tv-list" class="movie-grid"></div>
+    </section>
 
-            </ul>
+    <!-- Upcoming Movies -->
+    <section class="content-section">
+      <h2>🍿 Upcoming Movies</h2>
+      <div id="upcoming-list" class="movie-grid"></div>
+    </section>
 
-        </nav>
+        <!-- Recently Viewed -->
+    <section class="content-section">
+      <h2>🕒 Recently Viewed</h2>
+      <div id="recent-list" class="movie-grid">
+        <div class="loading">Loading recently viewed...</div>
+      </div>
+    </section>
+  </main>
 
-        <form
-            id="search-form"
-            class="search-form">
-
-            <label
-                for="search-input"
-                class="visually-hidden">
-
-                Search Movies
-            </label>
-
-            <input
-                id="search-input"
-                type="search"
-                placeholder="Search movies or TV shows...">
-
-            <button type="submit">
-                Search
-            </button>
-
-        </form>
-
-    </header>
-
-    <main>
-
-        <section
-            id="hero-banner"
-            class="hero-banner">
-
-            <div class="hero-overlay">
-
-                <div class="hero-content">
-
-                    <h2 id="hero-title">
-                        Loading...
-                    </h2>
-
-                    <p id="hero-overview">
-                    </p>
-
-                    <a
-                        id="hero-button"
-                        class="btn">
-
-                        View Details
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <section class="controls">
-
-            <h2>Browse Content</h2>
-
-            <div class="filter-group">
-
-                <select id="genre-select">
-                    <option value="">
-                        All Genres
-                    </option>
-                </select>
-
-                <select id="sort-select">
-
-                    <option value="popularity.desc">
-                        Most Popular
-                    </option>
-
-                    <option value="vote_average.desc">
-                        Highest Rated
-                    </option>
-
-                    <option value="release_date.desc">
-                        Newest
-                    </option>
-
-                </select>
-
-            </div>
-
-        </section>
-
-        <section class="content-section">
-
-            <h2>Trending Movies</h2>
-
-            <div
-                id="trending-list"
-                class="movie-grid">
-
-            </div>
-
-        </section>
-
-        <section class="content-section">
-
-            <h2>Popular TV Shows</h2>
-
-            <div
-                id="tv-list"
-                class="movie-grid">
-
-            </div>
-
-        </section>
-
-        <section class="content-section">
-
-            <h2>Upcoming Movies</h2>
-
-            <div
-                id="upcoming-list"
-                class="movie-grid">
-
-            </div>
-
-        </section>
-
-        <section class="content-section">
-
-            <h2>Search Results</h2>
-
-            <div
-                id="movie-list"
-                class="movie-grid">
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer>
-
-        <p>
-            Powered by TMDb
-        </p>
-
-        <p>
-            © 2026 ScreenScout
-        </p>
-
-    </footer>
-
+  <footer>
+    <p>Powered by TMDb &copy; 2026 ScreenScout</p>
+  </footer>
 </body>
-
 </html>
