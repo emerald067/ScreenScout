@@ -9,7 +9,13 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const type = params.get("type") || "movie";
 
-initialize();
+if (!container) {
+  console.error("Fatal: #movie-details element not found!");
+} else if (!id) {
+  container.innerHTML = "<p class='error-message'>No movie or show ID provided.</p>";
+} else {
+  initialize();
+}
 
 async function initialize() {
   if (!id) {
