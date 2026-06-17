@@ -6,7 +6,7 @@
   --light: #F8FAFC;
   --white: #ffffff;
   --gray: #64748B;
-  --shadow: 0 4px 12px rgba(0,0,0,.15);
+  --shadow: 0 4px 12px rgba(0, 0, 0, .15);
   --transition: all 0.3s ease;
 }
 
@@ -89,16 +89,16 @@ body {
 
 /* ===== HERO BANNER ===== */
 .hero-banner {
-  min-height: 85vh;     
+  min-height: 85vh;
   background-size: cover;
-  background-position: center 15%;  
+  background-position: center 15%;
   background-repeat: no-repeat;
   position: relative;
 }
 
 .hero-overlay {
-  background: rgba(0,0,0,0.6);
-  min-height: 85vh;       
+  background: rgba(0, 0, 0, 0.6);
+  min-height: 85vh;
   display: flex;
   align-items: center;
 }
@@ -118,6 +118,7 @@ body {
   margin-bottom: 1.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -173,7 +174,7 @@ select {
 
 .movie-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 .movie-card img {
@@ -312,6 +313,7 @@ footer {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -320,7 +322,7 @@ footer {
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-    .hero-banner {
+  .hero-banner {
     min-height: 60vh;
     background-position: center 25%;
   }
@@ -357,7 +359,7 @@ footer {
   .controls {
     padding: 1rem;
   }
-  
+
   .content-section {
     padding: 1rem;
   }
@@ -370,7 +372,7 @@ footer {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
