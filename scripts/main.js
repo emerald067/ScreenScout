@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialize();
 });
 
-// Get DOM elements – but we'll re‑query inside each function to be safe
-// Instead of global variables that might be null, we'll fetch them when needed.
-
+// Get DOM elements
 let currentSearchQuery = "";
 
 async function initialize() {
